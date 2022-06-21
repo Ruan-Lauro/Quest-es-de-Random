@@ -1,0 +1,41 @@
+while True:
+    A = int(input("Digite 1 para escolher a Pedra; ou digite 2 para escolher Tesoura; ou digite 3 para escolher o Papel: "))
+    if A == 1 or A == 2 or A == 3:
+        break  
+
+if A == 1:
+    B = "Pedra"
+
+elif A == 2:
+    B = "Tesoura"
+else:
+    B = "Papel"
+
+from random import randint
+Com = randint(1,3)
+print(Com)
+if Com == 1:
+    Co = "Pedra"
+    a = "a"
+elif Com == 2:
+    Co = "Tesoura"
+    a = "a"
+else:
+    Co = "Papel"
+    a = "o"
+
+
+if A == Com:
+    print(f"Você escolheu {B} e o computador escolheu {a} {Co}. Deu empate!")
+elif A == 1 and Com == 2:
+    print(f"Você escolheu {B} e o computador escolheu {a} {Co}. Você venceu!")
+elif A == 2 and Com == 1:
+    print(f"Você escolheu {B} e o computador escolheu {a} {Co}. O computador venceu!")
+elif A == 3 and Com == 1:
+    print(f"Você escolheu {B} e o computador escolheu {a} {Co}. Você ganhou!")
+elif A == 1 and Com == 3:
+    print(f"Você escolheu {B} e o computador escolheu {a} {Co}. O computador venceu!")
+elif A == 2 and Com == 3:
+    print(f"Você escolheu {B} e o computador escolheu {a} {Co}. Você ganhou!")
+elif A == 3 and Com == 2:
+    print(f"Você escolheu {B} e o computador escolheu {a} {Co}. O computador venceu!")
