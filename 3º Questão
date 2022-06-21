@@ -1,0 +1,55 @@
+from random import choices
+
+X = int(input("Escreva a quantidade de pacotes: "))
+
+#Origem para M1, M2 e Falha
+Lista = ["M1","M2","Falha"]
+weights = [60,30,10]
+Valor = choices(Lista, weights, k=X)
+A = Valor.count("M1")
+Falha = Valor.count("Falha")
+
+#M1 para M3, M4 e Falha
+Lista1 = ["M3","M4","Falha"]
+weights1 = [50,30,20]
+Valor1 = choices(Lista1, weights1, k = A)
+Falha1 = Valor1.count("Falha")
+
+#M3 para Destino ou falha
+M3 = Valor1.count("M3")
+Lista2 = ["Destino","Falha"]
+weights2 = [90,10]
+valor2 = choices(Lista2,weights2, k = M3)
+Destino3 = valor2.count("Destino")
+Falha2 = valor2.count("Falha")
+
+#M4 para Destino ou falha
+M4 = Valor1.count("M4")
+Lista3 = ["Destino","Falha"]
+weights3 = [80,20]
+Valor3 = choices(Lista3, weights3, k = M4)
+Destino4 = Valor3.count("Destino")
+Falha3 = Valor3.count("Falha")
+
+#M2 para M5 ou falha
+M2 = Valor.count("M2")
+Lista4 = ["M5","Falha"]
+weights4 = [95,5]
+Valor4 = choices(Lista4, weights4, k = M2)
+Falha4 = Valor4.count("Falha")
+
+#M5 para Destino ou Falha
+M5 = Valor4.count("M5")
+Lista5 = ["Destino","Falha"]
+weight5 = [85,15]
+Valor5 = choices(Lista5, weight5, k = M5)
+Destino5 = Valor5.count("Destino")
+Falha5 = Valor5.count("Falha")
+
+#Mostrar os valores
+F = Falha + Falha1 + Falha2 + Falha3 + Falha4 + Falha5
+print(f"Estatísticas do envio de {X} pacotes:")
+print(f"{Destino3} pacotes chegaram pela rota1;")
+print(f"{Destino4} pacotes chegaram pela rota2;")
+print(f"{Destino5} pacotes chegaram pela rota3;")
+print(f"{F} pacotes se perderam (falharam).")
