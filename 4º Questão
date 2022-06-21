@@ -1,0 +1,84 @@
+import random
+
+A = input("Nome do 1º jogador: ")
+B = input("Nome do 2º jogador: ")
+
+
+def linha():
+    print("-"*40)
+
+Lista = ["Paus","Copas","Ouro","Espadas"]
+Jogador1 = []
+Jogador2 = []
+S2 = 0
+S1 = 0
+
+for i in range(6):
+    Cardnum = random.randint(0,3)
+    Carta = Lista[Cardnum]
+    
+    Número = random.randint(1,13)
+
+    if Número < 10:
+        Carta1 = f"{Número} de {Carta}"
+    
+    elif Número == 11:
+        Carta1 = f"Valete de {Carta}"
+    elif Número == 12:
+        Carta1 = f"Dama de {Carta}"
+    elif Número == 13:
+        Carta1 = f"Rei de {Carta}"
+        
+    if i % 2 == 1:
+        Jogador1.append(Carta1)
+        S1 = S1 + Número
+    
+    elif i % 2 == 0:
+        Jogador2.append(Carta1)
+        S2 = S2 + Número
+        
+
+linha()
+
+print(f"As cartas do(a) {A} foram: ")
+
+for i in Jogador1:
+    print(i)
+    
+if S1 > 21:
+    print(f"Seu valor foi {S1}, você estourou!")
+else:
+    print(f"Seu valor foi {S1}")
+    
+linha()
+
+print(f"As cartas do(a) {B} foram: ")
+
+for i in Jogador2:
+    print(i)
+    
+if S2 > 21:
+    print(f"Seu valor foi {S2}, você estourou!")
+else:
+    print(f"Seu valor foi {S2}")
+    
+linha()
+
+print("Resultado:", end = " ")
+
+if S1 == S2:
+    print(f"Empate", end = " ")
+elif S2 < S1 < 21:
+    print(f"O(A) {A} Ganhou!", end = " ")
+elif S1 < S2 < 21:
+    print(f"O(A) {B} Ganhou!", end = " ")
+elif S1 and S2 > 21:
+    print(f"Os(As) dois(uas) estouraram", end = " ")
+elif S1 > S2 and S1 > 21:
+    print(f"O(A) {B} Ganhou!", end = " ")
+elif S2 > S1 and S2 > 21:
+    print(f"O(A) {A} Ganhou!", end = " ")
+    
+print(" ")
+
+linha()
