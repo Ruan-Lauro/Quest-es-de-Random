@@ -1,0 +1,82 @@
+import random
+
+def linha():
+    print("-"*50)
+
+def Porcentagem(Soma,Valor):
+    V = 5840.86/Valor
+
+    P = Soma*0.01
+
+    if Valor < P:
+        Di = P - Valor
+    elif P < Valor:
+        Di = Valor - P
+
+    VA = 5840.86/Di
+
+    Porcentagem1 = int((100*Di)/Valor)
+    Por1 = 100 - Porcentagem1
+    print(f"a velocidade só perdeu {Por1}%")
+
+A = int(input("Velocidade média do návio: "))
+while True:
+    B = int(input("Peso máximo que o návio aguenta: "))
+    if 1000 <= B <= 3000:
+        break
+
+Soma_Peso = 0
+Quantidade = 0
+Lista = []
+
+for i in range(1,3000):
+    Peso = random.randint(1,100)
+    Soma_Peso += Peso
+    Lista.append(Peso)
+    Quantidade += 1
+    if Quantidade == 50:
+        break
+    if Soma_Peso > B:
+        Soma_Peso -= Peso
+        Quantidade -= 1
+        break
+
+P = Soma_Peso*0.01
+
+if A < P:
+    Di = P - A
+elif P < A:
+    Di = A - P
+
+Km = int(5840.86/Di)
+
+Porcentagem2 = int((100*Di)/A) 
+Por = 100 - Porcentagem2
+count = maior = 0
+
+linha()
+print(f"O seu návio suporta {B} toneladas.")
+print(f"A velocidade do seu návio é de {A}Km/h.")
+print(f"Seu návio tem {Quantidade} containers")
+print(f"Seu návio vai demorar {Km}h para chegar, pois a velocidade caiu {Por}%")
+linha()
+
+while True:
+    Pergunta = input("Você quer diminuir o seu tempo de rota? [S/N] ")
+    if Pergunta == "N":
+        linha()
+        break
+    elif Pergunta == "S":
+        linha()
+        maior = max(Lista)
+        G = 1 +(Lista.index(maior))
+        print(f"Tiramos o {G}º container do návio, pois ele pesa {maior}kg.")
+        Soma_Peso -= maior
+        Valor1 = Soma_Peso*0.01
+        Valor2 = A - Valor1
+        Valor3 = int(5840.86/Valor2)
+        Porcentagem(Soma_Peso,A) 
+        print(f"Agora vai demorar {Valor3}h para chegar ao destino")
+        Lista.remove(Lista[Lista.index(maior)])
+        Quantidade -= 1
+        print(f"Seu návio tem {Quantidade} containers")
