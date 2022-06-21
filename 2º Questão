@@ -1,0 +1,29 @@
+while True:
+    P = int(input("Escolha um número de 1 à 6: "))
+    if 0 < P <= 6 :
+        break
+
+from random import randint
+
+Dado1 = randint(1,6)
+
+Dado2 = randint(1,6)
+
+Dado3 = randint(1,6)
+
+if P != Dado1 and P != Dado2 and P != Dado3:
+    print("Você não acertou nenhum número!")
+elif P == Dado1 and P != Dado2 and P != Dado3:
+    print("Você acertou uma vez!")
+elif P != Dado1 and P == Dado2 and P != Dado3:
+    print("Você acertou uma vez!")
+elif P != Dado1 and P != Dado2 and P == Dado3:
+    print("Você acertou uma vez!")
+elif P == Dado1 and P == Dado2 and P != Dado3:
+    print("Você acertou duas vezes!")
+elif P != Dado1 and P == Dado2 and P == Dado3:
+    print("Você acertou duas vezes!")
+elif P == Dado1 and P != Dado2 and P == Dado3:
+    print("Você acertou duas vezes!")
+elif P == Dado1 and P == Dado2 and P == Dado3:
+    print("Você acertou três vezes. Sensacional!")
