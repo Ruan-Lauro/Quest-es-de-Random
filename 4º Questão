@@ -12,8 +12,8 @@ Jogador1 = []
 Jogador2 = []
 S2 = 0
 S1 = 0
-
-for i in range(6):
+Carta1 = 0
+for i in range(13):
     Cardnum = random.randint(0,3)
     Carta = Lista[Cardnum]
     
@@ -30,14 +30,20 @@ for i in range(6):
         Carta1 = f"Rei de {Carta}"
         
     if i % 2 == 1:
-        Jogador1.append(Carta1)
-        S1 = S1 + Número
+        if len(Jogador1) <= 2:
+                if Carta1 not in Jogador1:
+                        if Carta1 not in Jogador2:
+                                Jogador1.append(Carta1)
+                                S1 = S1 + Número
     
     elif i % 2 == 0:
-        Jogador2.append(Carta1)
-        S2 = S2 + Número
-        
-
+        if len(Jogador2) <= 2:
+                if Carta1 not in Jogador2:
+                        if Carta1 not in Jogador1:
+                                Jogador2.append(Carta1)
+                                S2 = S2 + Número
+    if len(Jogador2) == 3 and len(Jogador1) == 3:
+            break
 linha()
 
 print(f"As cartas do(a) {A} foram: ")
@@ -68,11 +74,11 @@ print("Resultado:", end = " ")
 
 if S1 == S2:
     print(f"Empate", end = " ")
-elif S2 < S1 < 21:
+elif S2 < S1 <= 21:
     print(f"O(A) {A} Ganhou!", end = " ")
-elif S1 < S2 < 21:
+elif S1 < S2 <= 21:
     print(f"O(A) {B} Ganhou!", end = " ")
-elif S1 and S2 > 21:
+elif S1 > 21 and S2 > 21:
     print(f"Os(As) dois(uas) estouraram", end = " ")
 elif S1 > S2 and S1 > 21:
     print(f"O(A) {B} Ganhou!", end = " ")
